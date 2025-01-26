@@ -3,7 +3,7 @@
 #include <getopt.h>
 
 // #include "common.h"
-// #include "file.h"
+#include "file.h"
 // #include "parse.h"
 
 void print_usage(char *argv[])
@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
   bool newfile = false;
   bool list = false;
   int c;
+  int dbfd = -1;
 
   while ((c = getopt(argc, argv, "nf:a:l")) != -1)
   {
@@ -57,5 +58,10 @@ int main(int argc, char *argv[])
     printf("Filepath is required argument\n");
     print_usage(argv);
     return -1;
+  }
+
+  if (newfile)
+  {
+    dbfd = create_db_file(filepath);
   }
 }

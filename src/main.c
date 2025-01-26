@@ -60,6 +60,7 @@ int main(int argc, char *argv[])
     return -1;
   }
 
+  // create file
   if (newfile)
   {
     dbfd = create_db_file(filepath);
